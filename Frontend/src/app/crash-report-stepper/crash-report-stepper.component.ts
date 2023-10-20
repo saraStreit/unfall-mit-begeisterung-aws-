@@ -33,7 +33,8 @@ export class CrashReportStepperComponent implements OnInit {
   });
   isLinear = true;
   data: any;
-  coordinates: any;
+  longitude: any;
+  latitude: any;
 
   constructor(private _formBuilder: FormBuilder, private datService: DatService) {}
 
@@ -46,7 +47,8 @@ export class CrashReportStepperComponent implements OnInit {
   getGeoLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.coordinates = position.coords;
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
       });
     } else {
       console.log('Geolocation is not supported by this browser.');

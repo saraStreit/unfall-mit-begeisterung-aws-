@@ -10,10 +10,17 @@
         <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="getGeoLocation()">
           <mat-icon>menu</mat-icon>
         </button>
-        <div> <!-- Opening <div> tag was missing here -->
+        <div *ngIf="latitude && longitude">
+          <p>Latitude: {{ latitude }}</p>
+          <p>Longitude: {{ longitude }}</p>
+        </div>
+        <div *ngIf="!latitude || !longitude">
+          <p>Location data not available.</p>
+        </div>
+        <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
-        </div> <!-- Closing </div> tag was misplaced -->
+        </div> 
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
