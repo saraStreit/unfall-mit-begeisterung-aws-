@@ -3,16 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CreateCrashReportComponent } from './create-crash-report/create-crash-report.component';
-
+import {MatCardModule} from "@angular/material/card";
+import { CrashReportStepperComponent } from './crash-report-stepper/crash-report-stepper.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatToolbarModule} from "@angular/material/toolbar";
 @NgModule({
   declarations: [
     AppComponent,
-    CreateCrashReportComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    CrashReportStepperComponent,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
