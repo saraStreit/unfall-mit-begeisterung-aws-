@@ -1,39 +1,85 @@
 <div>
   <mat-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" style="display: flex; flex-direction: column;">
         <ng-template matStepLabel>Standort des Unfalls</ng-template>
+        <div *ngIf="!useCoordinates">
         <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+          <mat-label>Strasse</mat-label>
+          <input  matInput placeholder="Hauptstrasse 10" [value]="street" formControlName="firstCtrl" required>
         </mat-form-field>
-        <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="getGeoLocation()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <div *ngIf="latitude && longitude">
-          <p>Latitude: {{ latitude }}</p>
-          <p>Longitude: {{ longitude }}</p>
+        <mat-form-field>
+          <mat-label>Ort</mat-label>
+          <input matInput placeholder="Zürich" [value]="city" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Land</mat-label>
+          <input matInput placeholder="Schweiz" [value]="country" formControlName="firstCtrl" required>
+        </mat-form-field>
+      </div>
+        <div *ngIf="useCoordinates; else useAddress">
+          <p>Stattdessen Koordinaten verwenden</p>
         </div>
-        <div *ngIf="!latitude || !longitude">
-          <p>Location data not available.</p>
+        <ng-template #useAddress>
+          <p>Stattdessen Adresse verwenden</p>
+        </ng-template>
+        <button mat-mini-fab color="primary" aria-label="GetCurrentLocation" (click)="getGeoLocation()">
+          <mat-icon> location_on</mat-icon>
+        </button>
+        <div *ngIf="latitude && longitude && useCoordinates">
+          <mat-form-field>
+            <mat-label>Breitengrad</mat-label>
+            <input matInput [value]="latitude">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Längengrad</mat-label>
+            <input matInput [value]="longitude">
+          </mat-form-field>
         </div>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div> 
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+    <mat-step [stepControl]="secondFormGroup" label="Persönliche Daten">
       <form [formGroup]="secondFormGroup">
         <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+          <mat-label>Vorname</mat-label>
+          <input matInput placeholder="Vorname" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nachname</mat-label>
+          <input matInput placeholder="Nachname" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>E-Mail Adresse</mat-label>
+          <input matInput placeholder="E-Mail" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Addresse</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Hauptstrasse 10" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Ort</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Zürich" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Land</mat-label>
+          <input matInput placeholder="Schweiz" [value]="country" formControlName="secondCtrl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Abschleppdienst</ng-template>
+      <p>Brauchen sie den Abschleppdienst</p>
+        <button mat-button matStepperPrevious>Nein</button>
+        <button mat-button matStepperNext>Ja</button>
+        
+        <button mat-button matStepperPrevious>Back</button>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
