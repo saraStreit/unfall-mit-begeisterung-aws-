@@ -12,7 +12,6 @@ export class DatService {
 
   getData(): Observable<any> {
     const url = `http://localhost:3000/api/crash-log/`; 
-    console.log(url);
     return this.http.get(url);
   }
 }

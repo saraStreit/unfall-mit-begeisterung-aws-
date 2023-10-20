@@ -5,6 +5,7 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angula
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {DatService} from "../dat.service";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-crash-report-stepper',
@@ -17,7 +18,8 @@ import {DatService} from "../dat.service";
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CommonModule
   ],
 })
 export class CrashReportStepperComponent implements OnInit {
