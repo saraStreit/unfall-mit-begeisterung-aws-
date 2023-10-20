@@ -6,10 +6,13 @@ const crashRoutes = require("./routes/crashRoutes");
 const crashLogRoutes = require("./routes/crashLogRoutes");
 const seedCrashDatabase = require('./seeder/seedCrashData');
 
+const seedCrashLogDatabase = require('./seeder/seedCrashLogData');
+
 const seedUserDatabase = require('./seeder/seedUserData');
 
 seedCrashDatabase();
 seedUserDatabase();
+seedCrashLogDatabase();
 
 const app = express();
 const PORT = 3000;
