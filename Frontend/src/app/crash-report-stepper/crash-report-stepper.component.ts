@@ -6,6 +6,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {DatService} from "../dat.service";
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-crash-report-stepper',
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    CommonModule
+    CommonModule,
+    MatIconModule
   ],
 })
 export class CrashReportStepperComponent implements OnInit {
@@ -31,6 +33,7 @@ export class CrashReportStepperComponent implements OnInit {
   });
   isLinear = true;
   data: any;
+  coordinates: any;
 
   constructor(private _formBuilder: FormBuilder, private datService: DatService) {}
 
@@ -38,5 +41,15 @@ export class CrashReportStepperComponent implements OnInit {
     this.datService.getData().subscribe((result) => {
       this.data = result;
     });
+  }
+
+  getGeoLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.coordinates = position.coords;
+      });
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
   }
 }

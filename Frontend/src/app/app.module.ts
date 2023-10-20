@@ -21,7 +21,7 @@ import { DatService } from './dat.service';
     ReactiveFormsModule,
     MatInputModule,
     CrashReportStepperComponent,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [DatService],
   bootstrap: [AppComponent]
