@@ -3,6 +3,7 @@ const path = require('path');
 const userRoutes = require("./routes/userRoutes");
 
 const crashRoutes = require("./routes/crashRoutes");
+const crashLogRoutes = require("./routes/crashLogRoutes");
 const seedCrashDatabase = require('./seeder/seedCrashData');
 
 const seedUserDatabase = require('./seeder/seedUserData');
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, '../Frontend/dist/Frontend')));
 // Use the routes
 app.use(userRoutes);
 app.use(crashRoutes);
+app.use(crashLogRoutes);
 
 
 // Handle SPA fallback (assuming you have a single page application frontend)
