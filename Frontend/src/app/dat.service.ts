@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DatService {
-  private baseUrl = 'http://localhost:3000'; // Adjust the URL to your server's endpoint
+  private baseUrl = 'http://localhost:3000'; 
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    const url = `${this.baseUrl}/your-api-endpoint`; // Replace 'your-api-endpoint' with the actual endpoint you want to fetch data from
+    const url = `http://localhost:3000/api/crash-log/`; 
+    console.log(url);
     return this.http.get(url);
   }
 }
