@@ -3,9 +3,12 @@ const path = require('path');
 const userRoutes = require("./routes/userRoutes");
 
 const crashRoutes = require("./routes/crashRoutes");
-const seedDatabase = require('./seeder/seedCrashData');
+const seedCrashDatabase = require('./seeder/seedCrashData');
 
-seedDatabase();
+const seedUserDatabase = require('./seeder/seedUserData');
+
+seedCrashDatabase();
+seedUserDatabase();
 
 const app = express();
 const PORT = 3000;
