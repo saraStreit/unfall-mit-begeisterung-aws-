@@ -7,6 +7,7 @@ import {MatInputModule} from "@angular/material/input";
 import {DatService} from "../dat.service";
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import {User} from "../Model/User";
 
 @Component({
   selector: 'app-crash-report-stepper',
@@ -40,6 +41,7 @@ export class CrashReportStepperComponent implements OnInit {
   city: string = '';
   country: string = '';
 
+  user: User = {} as User;
   constructor(private _formBuilder: FormBuilder, private datService: DatService) {}
 
   ngOnInit(): void {

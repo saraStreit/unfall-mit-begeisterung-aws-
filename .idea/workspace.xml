@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ebfe0ed-1278-4117-b463-f045c5704186" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Frontend/src/app/Model/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/app/crash-report-stepper/crash-report-stepper.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/crash-report-stepper/crash-report-stepper.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/app/crash-report-stepper/crash-report-stepper.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/crash-report-stepper/crash-report-stepper.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +67,7 @@
       <workItem from="1697847947919" duration="1330000" />
       <workItem from="1697851925147" duration="114000" />
       <workItem from="1697852071851" duration="7376000" />
-      <workItem from="1697859763332" duration="237000" />
+      <workItem from="1697859763332" duration="871000" />
     </task>
     <servers />
   </component>

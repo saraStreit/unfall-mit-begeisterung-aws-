@@ -38,34 +38,34 @@
         </div>
         <div>
           <button mat-button matStepperNext>Next</button>
-        </div> 
+        </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" label="Persönliche Daten">
       <form [formGroup]="secondFormGroup">
         <mat-form-field>
           <mat-label>Vorname</mat-label>
-          <input matInput placeholder="Vorname" formControlName="secondCtrl" required>
+          <input matInput placeholder="Vorname" [value]="user.firstName" formControlName="secondCtrl" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Nachname</mat-label>
-          <input matInput placeholder="Nachname" formControlName="secondCtrl" required>
+          <input matInput placeholder="Nachname" [value]="user.lastName" formControlName="secondCtrl" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>E-Mail Adresse</mat-label>
-          <input matInput placeholder="E-Mail" formControlName="secondCtrl" required>
+          <input matInput placeholder="E-Mail" [value]="user.email" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tel</mat-label>
+          <input matInput placeholder="Tel" [value]="user.phoneNumber" formControlName="secondCtrl" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Addresse</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Hauptstrasse 10" required>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Ort</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Zürich" required>
+          <input matInput formControlName="secondCtrl" [value]="user.address" placeholder="Hauptstrasse 10" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Land</mat-label>
-          <input matInput placeholder="Schweiz" [value]="country" formControlName="secondCtrl" required>
+          <input matInput placeholder="Schweiz" [value]="user.land" formControlName="secondCtrl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -74,11 +74,15 @@
       </form>
     </mat-step>
     <mat-step>
+      <ng-template matStepLabel>Angaben zum Auto</ng-template>
+      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious>Back</button>
+    </mat-step>
+    <mat-step>
       <ng-template matStepLabel>Abschleppdienst</ng-template>
       <p>Brauchen sie den Abschleppdienst</p>
         <button mat-button matStepperPrevious>Nein</button>
         <button mat-button matStepperNext>Ja</button>
-        
         <button mat-button matStepperPrevious>Back</button>
     </mat-step>
     <mat-step>
