@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ebfe0ed-1278-4117-b463-f045c5704186" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Frontend/src/app/models/carData.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/app/models/coordinates.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/app/models/userData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/Model/User.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/app/crash-report-stepper/crash-report-stepper.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/crash-report-stepper/crash-report-stepper.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/src/app/crash-report-stepper/crash-report-stepper.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/crash-report-stepper/crash-report-stepper.component.ts" afterDir="false" />

@@ -3,29 +3,35 @@
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" style="display: flex; flex-direction: column;">
         <ng-template matStepLabel>Standort des Unfalls</ng-template>
-        <div *ngIf="!useCoordinates">
+        <div *ngIf="!useCoordinates" style="display: flex; flex-direction: column">
         <mat-form-field>
           <mat-label>Strasse</mat-label>
-          <input  matInput placeholder="Hauptstrasse 10" [value]="street" formControlName="firstCtrl" required>
+          <input  matInput placeholder="Hauptstrasse 10" [value]="street" formControlName="firstCtrl" >
         </mat-form-field>
         <mat-form-field>
           <mat-label>Ort</mat-label>
-          <input matInput placeholder="Zürich" [value]="city" formControlName="firstCtrl" required>
+          <input matInput placeholder="Zürich" [value]="city" formControlName="firstCtrl" >
         </mat-form-field>
         <mat-form-field>
           <mat-label>Land</mat-label>
-          <input matInput placeholder="Schweiz" [value]="country" formControlName="firstCtrl" required>
+          <input matInput placeholder="Schweiz" [value]="country" formControlName="firstCtrl" >
         </mat-form-field>
       </div>
-        <div *ngIf="useCoordinates; else useAddress">
-          <p>Stattdessen Koordinaten verwenden</p>
+        <div *ngIf="useCoordinates; else useAddress" style="display: flex; flex-direction: row">
+          <button mat-mini-fab color="primary" aria-label="GetCurrentLocation" (click)="getGeoLocation()">
+            <mat-icon> location_on</mat-icon>
+          </button>
+          <p style="color: white; margin-left: 20px; margin-top: 10px;">Addresse verwenden</p>
         </div>
         <ng-template #useAddress>
-          <p>Stattdessen Adresse verwenden</p>
+          <div  style="flex-direction: row; display: flex">
+          <button mat-mini-fab color="primary" aria-label="GetCurrentLocation" (click)="getGeoLocation()">
+            <mat-icon> location_on</mat-icon>
+          </button>
+          <p style="color: white; margin-left: 20px;  margin-top: 10px;">Koordinaten verwenden</p>
+          </div>
         </ng-template>
-        <button mat-mini-fab color="primary" aria-label="GetCurrentLocation" (click)="getGeoLocation()">
-          <mat-icon> location_on</mat-icon>
-        </button>
+
         <div *ngIf="latitude && longitude && useCoordinates">
           <mat-form-field>
             <mat-label>Breitengrad</mat-label>
@@ -37,10 +43,12 @@
           </mat-form-field>
         </div>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button color="accent" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
+
+
     <mat-step [stepControl]="secondFormGroup" label="Persönliche Daten">
       <form [formGroup]="secondFormGroup">
         <mat-form-field>
@@ -111,8 +119,7 @@
       <ng-template matStepLabel>Done</ng-template>
       <p>You are now done.</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button (click)="submitPersonalData()">Submit</button>
       </div>
     </mat-step>
   </mat-stepper>

@@ -41,7 +41,7 @@ export class CrashReportStepperComponent implements OnInit {
   data: any;
   longitude: any;
   latitude: any;
-  useCoordinates : boolean = false;
+  useCoordinates: boolean = false;
   street: string = '';
   city: string = '';
   country: string = '';
@@ -49,12 +49,21 @@ export class CrashReportStepperComponent implements OnInit {
   user: UserData = {} as UserData;
   userCrash: UserData = {} as UserData;
   car: CarData = {} as CarData;
-  constructor(private _formBuilder: FormBuilder, private datService: DatService) {}
+
+  constructor(private _formBuilder: FormBuilder, private datService: DatService) {
+  }
 
   ngOnInit(): void {
     this.datService.getData().subscribe((result) => {
       this.data = result;
     });
+  }
+
+  submitPersonalData() {
+    if (this.user.firstName) {
+      this.datService.submitPersonalData(this.user).subscribe((result) => {
+      });
+    }
   }
 
   getGeoLocation() {
@@ -66,11 +75,6 @@ export class CrashReportStepperComponent implements OnInit {
       });
     } else {
       console.log('Geolocation is not supported by this browser.');
-    }
-  }
-
-  submitPersonalData() {
-    if(this.user.firstName) {
     }
   }
 }

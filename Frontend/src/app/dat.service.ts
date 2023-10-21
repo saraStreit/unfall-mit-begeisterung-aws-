@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {UserData} from "./models/userData";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class DatService {
     return this.http.get(url);
   }
 
-  sumbitPersonalData(): Observable<any> {
-    const url = `http://localhost:3000/api/crash-log/`;
-    return this.http.post(url, {});
+  submitPersonalData(userData : UserData): Observable<any> {
+    const url = `http://localhost:3000/api/user`;
+    return this.http.post(url, {userData});
   }
 }
