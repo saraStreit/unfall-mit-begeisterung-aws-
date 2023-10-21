@@ -23,8 +23,7 @@ export class DatService {
 
   getCarData(b : string , z : number): Observable<any> {
     const url = `http://localhost:3000/api/crash/check/` + b + '/' + z as string;
-    console.log(url);
-    return this.http.post(url, {b, z});
+    return this.http.get(url);
   }
 }
 

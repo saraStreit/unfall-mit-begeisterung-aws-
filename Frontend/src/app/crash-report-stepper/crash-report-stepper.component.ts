@@ -52,7 +52,10 @@ export class CrashReportStepperComponent implements OnInit {
   city: string = '';
   country: string = '';
 numberPlateError: string = '';
+fahrzeugdaten: boolean = false;
 abschlepp: boolean = false;
+vehicleData: any;
+
 
   user: UserData = {} as UserData;
   userCrash: UserData = {} as UserData;
@@ -86,23 +89,21 @@ abschlepp: boolean = false;
     }
   }
   validateNumberPlate() {
-    const swissPlateRegex = /^[A-Z]{2}\d{1,6}$/;
+    const swissPlateRegex = /^[A-Z]{2}\d{1,8}$/;
     if (!swissPlateRegex.test(this.car.carNumberplate)) {
       this.numberPlateError = 'Invalid Swiss Number Plate';
     } else {
       this.numberPlateError = '';
     }
   }
-
   getCarInfos(){
     if (this.car.carNumberplate) {
       const firstTwoChars: string = this.car.carNumberplate.slice(0, 2);
       const restOfString: string = this.car.carNumberplate.slice(2);
       const restAsNumber: number = parseInt(restOfString, 10);
-      console.log(firstTwoChars);
-      console.log(restAsNumber);
+      this.fahrzeugdaten = true;
+      this.vehicleData = this.datService.getCarData(firstTwoChars, restAsNumber)
       this.datService.getCarData(firstTwoChars, restAsNumber).subscribe((result) => {
-        this.car = result;
         console.log(result);
       });
     }

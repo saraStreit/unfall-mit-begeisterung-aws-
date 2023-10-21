@@ -93,12 +93,14 @@
       <div style="display: flex; flex-direction: column">
         <mat-form-field>
           <input matInput placeholder="Swiss Number Plate" [(ngModel)]="car.carNumberplate" (input)="validateNumberPlate()">
-          <mat-hint align="end" style="color:white">{{ car.carNumberplate?.length }}/max. 7 characters</mat-hint>
+          <mat-hint align="end" style="color:white">{{ car.carNumberplate?.length }}/max. 8 characters</mat-hint>
           <mat-error *ngIf="numberPlateError">{{ numberPlateError }}</mat-error>
         </mat-form-field>
         <span style="color: orange">{{numberPlateError}}</span>
-        <button mat-button matStepperPrevious (click)="getCarInfos()">Fahrzeugdaten abrufen</button>
-
+        <button mat-button (click)="getCarInfos()">Fahrzeugdaten abrufen</button>
+        <div *ngIf="vehicleData" style="color: white">
+          {{vehicleData | async | json}}
+        </div>
       </div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button color="accent" matStepperNext>Next</button>
