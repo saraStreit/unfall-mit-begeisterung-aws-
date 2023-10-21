@@ -1,4 +1,4 @@
-<div>
+<div xmlns="http://www.w3.org/1999/html">
   <mat-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" style="display: flex; flex-direction: column;">
@@ -41,6 +41,9 @@
             <mat-label>Längengrad</mat-label>
             <input matInput [value]="longitude">
           </mat-form-field>
+          <div style="background-color: orange; display: flex; flex-direction: column; padding: 10px; border-radius: 10px;  padding-top: 15px; margin-bottom: 20px; margin-top: 20px ">
+            <h4>Bei Notfällen wählen Sie bitte die Notrufnummer 112</h4> <br>
+          </div>
         </div>
         <div>
           <button mat-button color="accent" matStepperNext>Next</button>
@@ -50,7 +53,9 @@
 
 
     <mat-step [stepControl]="secondFormGroup" label="Persönliche Daten">
+      <div style="display: flex; flex-direction: column">
       <form [formGroup]="secondFormGroup">
+        <div style="display: flex; flex-direction: column; margin-top: 20px">
         <mat-form-field>
           <mat-label>Vorname</mat-label>
           <input matInput placeholder="Vorname" [value]="user.firstName" formControlName="secondCtrl" required>
@@ -75,11 +80,13 @@
           <mat-label>Land</mat-label>
           <input matInput placeholder="Schweiz" [value]="user.land" formControlName="secondCtrl" required>
         </mat-form-field>
+        </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
+      </div>
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup">
       <ng-template matStepLabel>Angaben zum Auto</ng-template>
