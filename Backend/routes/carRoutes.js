@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const CrashData = require("../models/carModel");
-const { json } = require("body-parser");
+
 
 
 // Check for numberplate
