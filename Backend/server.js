@@ -5,6 +5,7 @@ const userRoutes = require("./routes/userRoutes");
 const crashRoutes = require("./routes/crashRoutes");
 const crashLogRoutes = require("./routes/crashLogRoutes");
 const carRoutes = require("./routes/carRoutes");
+const sendEuRoutes = require("./routes/sendEuRoutes");
 const seedCrashDatabase = require('./seeder/seedCrashData');
 
 const seedCrashLogDatabase = require('./seeder/seedCrashLogData');
@@ -30,6 +31,7 @@ app.use(userRoutes);
 app.use(crashRoutes);
 app.use(crashLogRoutes);
 app.use(carRoutes);
+app.use(sendEuRoutes);
 
 
 // Handle SPA fallback (assuming you have a single page application frontend)
@@ -41,3 +43,4 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server läuft auf http://localhost:${PORT}`);
 });
+
