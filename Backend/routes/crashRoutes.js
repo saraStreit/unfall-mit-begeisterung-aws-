@@ -23,10 +23,14 @@ router.get("/api/crash", async (req, res) => {
     }
 });
 
+
+
 // READ ONE
 router.get("/api/crash/:numberplate", async (req, res) => {
     try {
-        const crashData = await CrashData.findOne({ carNumberplate: req.params.numberplate });
+        const crashData = await CrashData.findOne({
+            carNumberplate: req.params.numberplate,
+        });
         if (!crashData) {
             return res.status(404).send();
         }
@@ -39,7 +43,12 @@ router.get("/api/crash/:numberplate", async (req, res) => {
 // UPDATE
 router.patch("/api/crash/:id", async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ["carModel", "carNumberplate", "crashData", "gpsData"];
+    const allowedUpdates = [
+        "carModel",
+        "carNumberplate",
+        "crashData",
+        "gpsData",
+    ];
     const isValidOperation = updates.every((update) =>
         allowedUpdates.includes(update)
     );

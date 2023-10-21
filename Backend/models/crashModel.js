@@ -2,7 +2,8 @@ const mongoose = require("../db");
 
 const crashDataSchema = new mongoose.Schema({
     carModel: String,
-    carNumberplate: String,
+    carNumberplate: Number,
+    carCountry: String,
     crashData: Array,
     gpsData: {
         type: {

@@ -4,6 +4,7 @@ const userRoutes = require("./routes/userRoutes");
 
 const crashRoutes = require("./routes/crashRoutes");
 const crashLogRoutes = require("./routes/crashLogRoutes");
+const carRoutes = require("./routes/carRoutes");
 const seedCrashDatabase = require('./seeder/seedCrashData');
 
 const seedCrashLogDatabase = require('./seeder/seedCrashLogData');
@@ -22,10 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../Frontend/dist/Frontend')));
 
+
+
 // Use the routes
 app.use(userRoutes);
 app.use(crashRoutes);
 app.use(crashLogRoutes);
+app.use(carRoutes);
 
 
 // Handle SPA fallback (assuming you have a single page application frontend)

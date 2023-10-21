@@ -4,7 +4,8 @@ const CrashData = require('../models/crashModel');
 const seedCrashData = [
     {
         carModel: 'Audi A4',
-        carNumberplate: 'XYZ 123',
+        carNumberplate: 123,
+        carCountry: 'DE',
         crashData: [
             { impactForce: 5.5, location: 'front-left' },
             { impactForce: 3.2, location: 'rear-right' }
@@ -16,55 +17,8 @@ const seedCrashData = [
     },
     {
         carModel: 'Audi A4',
-        carNumberplate: 'XYZ 123',
-        crashData: [
-            { impactForce: 5.5, location: 'front-left' },
-            { impactForce: 3.2, location: 'rear-right' }
-        ],
-        gpsData: {
-            type: 'Point',
-            coordinates: [12.4924, 41.8902]
-        }
-    },
-    {
-        carModel: 'Audi A4',
-        carNumberplate: 'XYZ 123',
-        crashData: [
-            { impactForce: 5.5, location: 'front-left' },
-            { impactForce: 3.2, location: 'rear-right' }
-        ],
-        gpsData: {
-            type: 'Point',
-            coordinates: [12.4924, 41.8902]
-        }
-    },
-    {
-        carModel: 'Audi A4',
-        carNumberplate: 'XYZ 123',
-        crashData: [
-            { impactForce: 5.5, location: 'front-left' },
-            { impactForce: 3.2, location: 'rear-right' }
-        ],
-        gpsData: {
-            type: 'Point',
-            coordinates: [12.4924, 41.8902]
-        }
-    },
-    {
-        carModel: 'Audi A4',
-        carNumberplate: 'XYZ 123',
-        crashData: [
-            { impactForce: 5.5, location: 'front-left' },
-            { impactForce: 3.2, location: 'rear-right' }
-        ],
-        gpsData: {
-            type: 'Point',
-            coordinates: [12.4924, 41.8902]
-        }
-    },
-    {
-        carModel: 'Audi A4',
-        carNumberplate: 'XYZ 123',
+        carNumberplate: 123,
+        carCountry: 'DE',
         crashData: [
             { impactForce: 5.5, location: 'front-left' },
             { impactForce: 3.2, location: 'rear-right' }
@@ -76,7 +30,8 @@ const seedCrashData = [
     },
     {
         carModel: 'BMW 3 Series',
-        carNumberplate: 'ABC 789',
+        carNumberplate: 789,
+        carCountry: 'DE',
         crashData: [
             { impactForce: 4.7, location: 'front-right' }
         ],
