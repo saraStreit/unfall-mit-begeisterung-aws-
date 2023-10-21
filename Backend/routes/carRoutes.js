@@ -3,6 +3,7 @@ const router = express.Router();
 const CrashData = require("../models/carModel");
 
 
+
 // Check for numberplate
 router.get("/api/crash/check/:country/:numberplate", async (req, res) => {
     try {
@@ -13,7 +14,7 @@ router.get("/api/crash/check/:country/:numberplate", async (req, res) => {
         if (!crashData) {
             return res.send(false);
         }
-        return res.send(true);
+        return res.json(crashData) ;
     } catch (error) {
         return res.status(500).send(error);
     }
