@@ -87,7 +87,7 @@ const seedCrashData = [
     }
 ];
 
-async function seedDatabase() {
+async function seedCrashDatabase() {
     try {
         await mongoose.connect('mongodb://root:root@localhost:27017/aws?authSource=admin&authMechanism=SCRAM-SHA-256', { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('Connected to MongoDB...');
@@ -103,5 +103,5 @@ async function seedDatabase() {
         console.error('Error seeding database:', error);
     }
 }
-module.exports = seedDatabase;
+module.exports = seedCrashDatabase;
 

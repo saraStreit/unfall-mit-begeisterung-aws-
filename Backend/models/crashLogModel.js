@@ -5,10 +5,61 @@ const crashLogDataSchema = new mongoose.Schema({
         firstName: String,
         lastName: String,
         email: String,
-        phoneNumber: Number,
+        phoneNumber: String,
         address: String,
-        land: String,
+        country: String,
         pronuns: String,
+        car: {
+            brand: String,
+            numberPlate: String,
+            landOfRegistration: String,
+        },
+        trailer: {
+            numberPlate: String,
+            landOfRegistration: String,
+        },
+        insurance: {
+            phoneNumber: String,
+            policyNumber: Number,
+            insuranceNumber: Number,
+            insuranceLand: String,
+            numberGreenCard: Number,
+            insuranceCompany: String,
+        },
+        driver: {
+            firstName: String,
+            lastName: String,
+            email: String,
+            phoneNumber: String,
+            address: String,
+            land: String,
+            birthDate: Date,
+            licenseNumber: Number,
+            licenseDate: Date,
+            licenseClass: String,
+        },
+        visibleDamage: {
+            front: Boolean,
+            frontLeft: Boolean,
+            frontRight: Boolean,
+            back: Boolean,
+            backLeft: Boolean,
+            backRight: Boolean,
+            left: Boolean,
+            right: Boolean,
+            top: Boolean,
+            bottom: Boolean,
+            other: Boolean,
+        },
+    },
+
+    personB: {
+        firstName: String,
+        lastName: String,
+        email: String,
+        phoneNumber: String,
+        address: String,
+        country: String,
         car: {
             brand: String,
             numberPlate: String,
@@ -30,7 +81,7 @@ const crashLogDataSchema = new mongoose.Schema({
             firstName: String,
             lastName: String,
             email: String,
-            phoneNumber: Number,
+            phoneNumber: String,
             address: String,
             land: String,
             birthDate: Date,
@@ -51,34 +102,79 @@ const crashLogDataSchema = new mongoose.Schema({
             bottom: Boolean,
             other: Boolean,
         },
-        
-
     },
-
-    personB: {
-        firstName: String,
-        lastName: String,
-        email: String,
-        phoneNumber: Number,
-        address: String,
-        land: String,
-    },
-
-    carNumberplate: String,
-    crashData: Array,
-    gpsData: {
-        type: {
-            type: String,
-            enum: ["Point"],
-            required: true,
+    accidentLog: {
+        parking: {
+            personA: Boolean,
+            personB: Boolean,
         },
-        coordinates: {
-            type: [Number],
-            required: true,
+        exitParking: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        parkingIn: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        parkingOut: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        driveInRoundabout: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        driveOutRoundabout: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        collideInSameDirectionSameLanesInBack: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        collideInSameDirectionOnDifrentLanes: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        changingLanes: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        overthatking: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        turningRight: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        turningLeft: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        driveBack: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        changeLanesToGhost: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        cameFromRight: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        ignoreRedLightOrStopSignEtc: {
+            personA: Boolean,
+            personB: Boolean,
+        },
+        howManyFields: {
+            personA: Number,
+            personB: Number,
         },
     },
 });
 
-const CrashData = mongoose.model("Crash", crashDataSchema, "CrashData");
+const CrashLogData = mongoose.model("CrashLog", crashLogDataSchema, "CrashLogData");
 
-module.exports = CrashData;
+module.exports = CrashLogData;

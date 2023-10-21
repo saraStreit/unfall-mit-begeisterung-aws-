@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const CrashData = require("../models/crashModel");
+const CrashData = require("../models/crashLogModel");
 
 // CREATE
-router.post("/api/crash", async (req, res) => {
+router.post("/api/crash-log", async (req, res) => {
     try {
         const crashData = new CrashData(req.body);
         await crashData.save();
@@ -14,7 +14,7 @@ router.post("/api/crash", async (req, res) => {
 });
 
 // READ ALL
-router.get("/api/crash", async (req, res) => {
+router.get("/api/crash-log", async (req, res) => {
     try {
         const crashData = await CrashData.find();
         res.send(crashData);
@@ -24,7 +24,7 @@ router.get("/api/crash", async (req, res) => {
 });
 
 // READ ONE
-router.get("/api/crash/:numberplate", async (req, res) => {
+router.get("/api/crash-log/:numberplate", async (req, res) => {
     try {
         const crashData = await CrashData.findOne({ carNumberplate: req.params.numberplate });
         if (!crashData) {
@@ -37,7 +37,7 @@ router.get("/api/crash/:numberplate", async (req, res) => {
 });
 
 // UPDATE
-router.patch("/api/crash/:id", async (req, res) => {
+router.patch("/api/crash-log/:id", async (req, res) => {
     const updates = Object.keys(req.body);
     const allowedUpdates = ["carModel", "carNumberplate", "crashData", "gpsData"];
     const isValidOperation = updates.every((update) =>
@@ -62,7 +62,7 @@ router.patch("/api/crash/:id", async (req, res) => {
 });
 
 // DELETE
-router.delete("/api/crash/:id", async (req, res) => {
+router.delete("/api/crash-log/:id", async (req, res) => {
     try {
         const crashData = await CrashData.findByIdAndDelete(req.params.id);
         if (!crashData) {

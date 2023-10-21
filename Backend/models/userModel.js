@@ -4,7 +4,7 @@ const userDataSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
-    phoneNumber: Number,
+    phoneNumber: String,
     address: String,
     land: String
 });
