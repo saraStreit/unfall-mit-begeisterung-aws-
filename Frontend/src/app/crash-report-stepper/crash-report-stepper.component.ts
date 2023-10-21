@@ -32,10 +32,16 @@ export class CrashReportStepperComponent implements OnInit {
   });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
-    numberCtrl: [0, Validators.required],
+    numberCtrl: ['', Validators.required],
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
+  });
+  fourthFormGroup = this._formBuilder.group({
+    fourthCtrl: ['', Validators.required],
+  });
+  fifthFormGroup = this._formBuilder.group({
+    fifthCtrl: ['', Validators.required],
   });
   isLinear = true;
   data: any;
@@ -45,6 +51,8 @@ export class CrashReportStepperComponent implements OnInit {
   street: string = '';
   city: string = '';
   country: string = '';
+numberPlateError: string = '';
+abschlepp: boolean = false;
 
   user: UserData = {} as UserData;
   userCrash: UserData = {} as UserData;
@@ -75,6 +83,28 @@ export class CrashReportStepperComponent implements OnInit {
       });
     } else {
       console.log('Geolocation is not supported by this browser.');
+    }
+  }
+  validateNumberPlate() {
+    const swissPlateRegex = /^[A-Z]{2}\d{1,6}$/;
+    if (!swissPlateRegex.test(this.car.carNumberplate)) {
+      this.numberPlateError = 'Invalid Swiss Number Plate';
+    } else {
+      this.numberPlateError = '';
+    }
+  }
+
+  getCarInfos(){
+    if (this.car.carNumberplate) {
+      const firstTwoChars: string = this.car.carNumberplate.slice(0, 2);
+      const restOfString: string = this.car.carNumberplate.slice(2);
+      const restAsNumber: number = parseInt(restOfString, 10);
+      console.log(firstTwoChars);
+      console.log(restAsNumber);
+      this.datService.getCarData(firstTwoChars, restAsNumber).subscribe((result) => {
+        this.car = result;
+        console.log(result);
+      });
     }
   }
 }

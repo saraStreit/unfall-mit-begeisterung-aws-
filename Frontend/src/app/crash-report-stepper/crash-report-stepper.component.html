@@ -83,32 +83,35 @@
         </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button color="accent" matStepperNext>Next</button>
         </div>
       </form>
       </div>
     </mat-step>
-    <mat-step [stepControl]="thirdFormGroup">
+    <mat-step [stepControl]="thirdFormGroup" [completed]="numberPlateError === ''">
       <ng-template matStepLabel>Angaben zum Auto</ng-template>
-      <mat-form-field>
-        <mat-label>Automodell</mat-label>
-        <input matInput placeholder="Audi A1" [value]="car.carModel" formControlName="thirdCtrl" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Nummernschild</mat-label>
-        <input matInput placeholder="Audi A1" [value]="car.carNumberplate" formControlName="thirdCtrl" required>
-      </mat-form-field>
-      <button mat-button matStepperNext>Next</button>
+      <div style="display: flex; flex-direction: column">
+        <mat-form-field>
+          <input matInput placeholder="Swiss Number Plate" [(ngModel)]="car.carNumberplate" (input)="validateNumberPlate()">
+          <mat-hint align="end" style="color:white">{{ car.carNumberplate?.length }}/max. 7 characters</mat-hint>
+          <mat-error *ngIf="numberPlateError">{{ numberPlateError }}</mat-error>
+        </mat-form-field>
+        <span style="color: orange">{{numberPlateError}}</span>
+        <button mat-button matStepperPrevious (click)="getCarInfos()">Fahrzeugdaten abrufen</button>
+
+      </div>
       <button mat-button matStepperPrevious>Back</button>
+      <button mat-button color="accent" matStepperNext>Next</button>
     </mat-step>
-    <mat-step>
+    <mat-step [stepControl]="fourthFormGroup">
       <ng-template matStepLabel>Abschleppdienst</ng-template>
-      <p>Brauchen sie den Abschleppdienst</p>
-        <button mat-button matStepperPrevious>Nein</button>
-        <button mat-button matStepperNext>Ja</button>
-        <button mat-button matStepperPrevious>Back</button>
+      <div >
+      <h3 style="color: white">Wenn ein Abschleppdienst benötigt wird rufen sie 041 228 94 94 an</h3>
+      <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
     </mat-step>
-    <mat-step>
+    <mat-step [stepControl]="fifthFormGroup">
       <ng-template matStepLabel>Unfallgegner</ng-template>
       <p>Gibt es Daten vom Unfallgegner</p>
       <button mat-button matStepperPrevious>Nein</button>
