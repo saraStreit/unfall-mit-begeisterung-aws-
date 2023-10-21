@@ -8,6 +8,10 @@ import {DatService} from "../dat.service";
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Coordinates } from '../models/coordinates';
+import {AppModule} from "../app.module";
+import {
+    EnterLocationCoordinateDataComponent
+} from "../enter-location-coordinate-data/enter-location-coordinate-data.component";
 
 @Component({
   selector: 'app-crash-report-stepper',
@@ -22,16 +26,15 @@ import { Coordinates } from '../models/coordinates';
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    AppModule
   ],
 })
 export class CrashReportStepperComponent implements OnInit {
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
+
   isLinear = true;
   data: any;
  coordinates: Coordinates = {latitude: null, longitude: null};

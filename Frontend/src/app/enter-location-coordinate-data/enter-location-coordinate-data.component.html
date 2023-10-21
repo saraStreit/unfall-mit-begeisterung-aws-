@@ -1,0 +1,40 @@
+<mat-step [stepControl]="firstFormGroup">
+  <form [formGroup]="firstFormGroup" style="display: flex; flex-direction: column;">
+    <ng-template matStepLabel>Standort des Unfalls</ng-template>
+    <div *ngIf="!useCoordinates">
+      <mat-form-field>
+        <mat-label>Strasse</mat-label>
+        <input  matInput placeholder="Hauptstrasse 10" [value]="street" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ort</mat-label>
+        <input matInput placeholder="Zürich" [value]="city" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Land</mat-label>
+        <input matInput placeholder="Schweiz" [value]="country" formControlName="firstCtrl" required>
+      </mat-form-field>
+    </div>
+    <div *ngIf="useCoordinates; else useAddress">
+      <p>Stattdessen Koordinaten verwenden</p>
+    </div>
+    <ng-template #useAddress>
+      <p>Stattdessen Adresse verwenden</p>
+    </ng-template>
+    <button mat-mini-fab color="primary" aria-label="GetCurrentLocation" (click)="getGeoLocation()">
+    </button>
+    <div *ngIf="coordinates && useCoordinates">
+      <mat-form-field>
+        <mat-label>Breitengrad</mat-label>
+        <input [value]="coordinates.latitude">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Längengrad</mat-label>
+        <input [value]="coordinates.longitude">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </form>
+</mat-step>
