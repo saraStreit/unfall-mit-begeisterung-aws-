@@ -7,6 +7,7 @@ import {MatInputModule} from "@angular/material/input";
 import {DatService} from "../dat.service";
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { Coordinates } from '../models/coordinates';
 
 @Component({
   selector: 'app-crash-report-stepper',
@@ -33,8 +34,7 @@ export class CrashReportStepperComponent implements OnInit {
   });
   isLinear = true;
   data: any;
-  longitude: any;
-  latitude: any;
+ coordinates: Coordinates = {latitude: null, longitude: null};
   useCoordinates : boolean = false;
   street: string = '';
   city: string = '';
@@ -51,8 +51,7 @@ export class CrashReportStepperComponent implements OnInit {
   getGeoLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
+        this.coordinates = position.coords;
         this.useCoordinates = !this.useCoordinates;
       });
     } else {
