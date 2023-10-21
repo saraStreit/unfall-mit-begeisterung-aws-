@@ -57,7 +57,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Tel</mat-label>
-          <input matInput placeholder="Tel" [value]="user.phoneNumber" formControlName="secondCtrl" required>
+          <input matInput placeholder="Tel" [value]="user.phoneNumber" formControlName="numberCtrl" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Addresse</mat-label>
@@ -73,8 +73,16 @@
         </div>
       </form>
     </mat-step>
-    <mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
       <ng-template matStepLabel>Angaben zum Auto</ng-template>
+      <mat-form-field>
+        <mat-label>Automodell</mat-label>
+        <input matInput placeholder="Audi A1" [value]="car.carModel" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nummernschild</mat-label>
+        <input matInput placeholder="Audi A1" [value]="car.carNumberplate" formControlName="thirdCtrl" required>
+      </mat-form-field>
       <button mat-button matStepperNext>Next</button>
       <button mat-button matStepperPrevious>Back</button>
     </mat-step>
@@ -84,6 +92,20 @@
         <button mat-button matStepperPrevious>Nein</button>
         <button mat-button matStepperNext>Ja</button>
         <button mat-button matStepperPrevious>Back</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Unfallgegner</ng-template>
+      <p>Gibt es Daten vom Unfallgegner</p>
+      <button mat-button matStepperPrevious>Nein</button>
+      <button mat-button matStepperNext>Ja</button>
+      <button mat-button matStepperPrevious>Back</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Angaben zum Schaden</ng-template>
+      <p>Geben Sie Angaben zu dem Schaden</p>
+      <button mat-button matStepperPrevious>Nein</button>
+      <button mat-button matStepperNext>Ja</button>
+      <button mat-button matStepperPrevious>Back</button>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>

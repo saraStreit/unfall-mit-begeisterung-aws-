@@ -6,12 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DatService {
-  private baseUrl = 'http://localhost:3000'; 
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    const url = `http://localhost:3000/api/crash-log/`; 
+    const url = `http://localhost:3000/api/crash-log/`;
     return this.http.get(url);
+  }
+
+  sumbitPersonalData(): Observable<any> {
+    const url = `http://localhost:3000/api/crash-log/`;
+    return this.http.post(url, {});
   }
 }

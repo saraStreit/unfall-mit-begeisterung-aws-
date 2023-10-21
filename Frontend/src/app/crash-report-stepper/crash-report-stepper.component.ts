@@ -7,7 +7,8 @@ import {MatInputModule} from "@angular/material/input";
 import {DatService} from "../dat.service";
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import {User} from "../Model/User";
+import {UserData} from "../models/userData";
+import {CarData} from "../models/carData";
 
 @Component({
   selector: 'app-crash-report-stepper',
@@ -31,6 +32,10 @@ export class CrashReportStepperComponent implements OnInit {
   });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
+    numberCtrl: [0, Validators.required],
+  });
+  thirdFormGroup = this._formBuilder.group({
+    thirdCtrl: ['', Validators.required],
   });
   isLinear = true;
   data: any;
@@ -41,7 +46,9 @@ export class CrashReportStepperComponent implements OnInit {
   city: string = '';
   country: string = '';
 
-  user: User = {} as User;
+  user: UserData = {} as UserData;
+  userCrash: UserData = {} as UserData;
+  car: CarData = {} as CarData;
   constructor(private _formBuilder: FormBuilder, private datService: DatService) {}
 
   ngOnInit(): void {
@@ -59,6 +66,11 @@ export class CrashReportStepperComponent implements OnInit {
       });
     } else {
       console.log('Geolocation is not supported by this browser.');
+    }
+  }
+
+  submitPersonalData() {
+    if(this.user.firstName) {
     }
   }
 }
